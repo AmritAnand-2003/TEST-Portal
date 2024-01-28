@@ -1,0 +1,90 @@
+
+
+<div class="container mt-5">
+  <div class="mat-card">
+    <div class="d-flex justify-content-between p-3">
+      <div class="image">
+        <p> <svg class='fontawesomesvg' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 32C92.7 32 64 60.7 64 96V352h64V96H512V352h64V96c0-35.3-28.7-64-64-64H128zM19.2 384C8.6 384 0 392.6 0 403.2C0 445.6 34.4 480 76.8 480H563.2c42.4 0 76.8-34.4 76.8-76.8c0-10.6-8.6-19.2-19.2-19.2H19.2z"/></svg>
+          </p>
+      </div>
+      <div class="quiz-header">
+        <h4 style="font-family: cursive">Operating Systems Quiz!</h4>
+        <span style="font-style: italic">Welcome {{ name }}</span>
+      </div>
+    </div>
+
+    <ng-container *ngIf="!isQuizCompleted">
+      <div class="d-flex justify-content-around py-3">
+        <div class="score">
+          <h5>{{ points }} Points</h5>
+        </div>
+        <div class="question-remain">
+          <span style="font-style: italic"
+            >Question {{ currentQuestion + 1 }} of
+            {{ questionList.length }}</span
+          >
+        </div>
+        <div class="timer">
+          <h5>{{ counter }} sec ⏱</h5>
+        </div>
+      </div>
+      <mat-progress-bar
+        class="mb-3"
+        mode="determinate"
+        [value]= "progress"
+      ></mat-progress-bar>
+      <div class="question">
+        <div class="mat-card">
+          <h3>{{ questionList[currentQuestion]?.question }}</h3>
+        </div>
+      </div>
+      <div class="options">
+        <ol *ngFor="let key of ['option1', 'option2', 'option3', 'option4']">
+          <li  (click)="answer(currentQuestion, questionList[currentQuestion][key])">
+            <div 
+            class="mat-card">
+              {{ questionList[currentQuestion][key] }}
+            </div> 
+          </li> 
+        </ol>
+      </div>
+      <div class="d-flex justify-content-between">
+        <button mat-mini-fab extended color="warn" class="text-warn" (click)="resetQuiz()">
+          <mat-icon >refresh</mat-icon>
+          <!-- Restart -->
+        </button>
+        <!-- <button mat-icon-button color="warn" >
+          <mat-icon>refresh</mat-icon>
+        </button> -->
+        <button (click)="answer(currentQuestion, '')" mat-raised-button color="primary" >SKIP
+        </button>
+        <!-- <button mat-fab extended>
+          <mat-icon>home</mat-icon>
+          Home
+        </button> -->
+      </div>
+    </ng-container>
+    
+
+    <ng-container *ngIf="isQuizCompleted">
+      <div class="row d-flex justify-content-between">
+        <img
+          style="width: 50%"
+          class="img-fluid col-sm-12 mx-auto"
+          src="https://icon-library.com/images/celebration-icon-png/celebration-icon-png-7.jpg"
+          alt=""/>
+        <div class="result text-center col-md-6 col-sm-12">
+          <h3>
+            Congratulations!! <br />You have completed the quiz. <br />Below is
+            your result:
+          </h3>
+          <p>Total No. of  Questions: {{ leng }}</p>
+          <p>Total Question Attempted: {{ correctAnswer + inCorrectAnswer }}</p>
+          <p>Total Correct Answered: {{ correctAnswer }}</p>
+          <p>Total Wrong Answered: {{ inCorrectAnswer }}</p>
+          <p>Your Score: {{ points }} Points</p>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

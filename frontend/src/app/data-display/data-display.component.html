@@ -1,0 +1,12 @@
+<p>data-display works!</p>
+
+<ul>
+    @for( post of data; track post.question){
+        <!-- <li>{{post.question}}</li> -->
+        <li *ngFor="let key of ['option1', 'option2', 'option3', 'option4']">
+            <h3>{{key}}</h3>
+            {{ post[key] }}
+        </li>
+    }
+    <!-- <h1>{{data[0]?.question}}</h1> -->
+    <!-- *ngFor="let key of ['option1', 'option2', 'option3', 'option4']"</ul> -->

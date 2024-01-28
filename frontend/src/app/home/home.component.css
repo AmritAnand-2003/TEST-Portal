@@ -1,0 +1,35 @@
+/* styles.css or your.component.css */
+
+#box {
+    max-width: 600px;
+    margin: auto;
+    text-align: center;
+    padding: 20px;
+  }
+  
+.mat-form-field {
+    width: 100%;
+}
+  
+.list, .mat-subheading-2{
+    text-align: left;
+    /* margin: auto; */
+}
+
+.mat-subheading-2{
+    padding-left: 20px;
+}
+
+.mat-body-1 ol {
+    text-align: left;
+    margin-left: 20px; /* Optional: Adjust the left margin for better spacing */
+}
+  
+  .custom-input {
+    width: 100%;
+  }
+  
+  .custom-button {
+    margin-top: 20px;
+  }
+  
