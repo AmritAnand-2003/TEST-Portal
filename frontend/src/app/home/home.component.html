@@ -10,86 +10,95 @@
     <li>
       <strong>Time Limit:</strong> Each question has a time limit of 60 seconds.
     </li>
-  
+
     <li>
-      <strong>Question Navigation:</strong> You cannot go back. Each question is presented one after the other, and you must either choose an answer within 60 seconds or the question will be marked as skipped.
+      <strong>Question Navigation:</strong> You cannot go back. Each question is
+      presented one after the other, and you must either choose an answer within
+      60 seconds or the question will be marked as skipped.
     </li>
-  
+
     <li>
-      <strong>Scoring:</strong> +10 points for correct answers, 0 points for unanswered questions or questions marked as skipped, and -5 points for incorrect answers.
+      <strong>Scoring:</strong> +10 points for correct answers, 0 points for
+      unanswered questions or questions marked as skipped, and -5 points for
+      incorrect answers.
     </li>
-  
+
     <li>
-      <strong>Attempts:</strong> One attempt only. Multiple attempts are not allowed.
+      <strong>Attempts:</strong> One attempt only. Multiple attempts are not
+      allowed.
     </li>
-  
+
     <li>
-      <strong>Device and Browser:</strong> Use a desktop or laptop with a compatible browser. Disable pop-up blockers and enable JavaScript.
+      <strong>Device and Browser:</strong> Use a desktop or laptop with a
+      compatible browser. Disable pop-up blockers and enable JavaScript.
     </li>
-  
+
     <li>
-      <strong>Honesty Policy:</strong> Complete the quiz independently without external assistance. No use of textbooks, notes, or online resources.
+      <strong>Honesty Policy:</strong> Complete the quiz independently without
+      external assistance. No use of textbooks, notes, or online resources.
     </li>
-  
+
     <li>
-      <strong>Submission Deadline:</strong> Submit your quiz by the specified deadline. Late submissions will not be accepted.
+      <strong>Submission Deadline:</strong> Submit your quiz by the specified
+      deadline. Late submissions will not be accepted.
     </li>
-  
+
     <li>
-      <strong>Review and Feedback:</strong> Feedback will be provided after the quiz, including correct and incorrect answers.
+      <strong>Review and Feedback:</strong> Feedback will be provided after the
+      quiz, including correct and incorrect answers.
     </li>
-  
+
     <li>
-      <strong>Technical Support:</strong> Contact amrit.anand&#64;e2enetworks.com for technical assistance.
+      <strong>Technical Support:</strong> Contact
+      amrit.anand&#64;e2enetworks.com for technical assistance.
     </li>
-  
+
     <li>
-      <strong>Proctoring:</strong> The quiz is not proctored; however, adherence to honesty policies is expected.
+      <strong>Proctoring:</strong> The quiz is not proctored; however, adherence
+      to honesty policies is expected.
     </li>
-  
+
     <li>
-      <strong>Feedback and Complaints:</strong> Use the provided channels to submit feedback or report issues.
+      <strong>Feedback and Complaints:</strong> Use the provided channels to
+      submit feedback or report issues.
     </li>
   </ol>
-  
+
   <h1 class="mat-display-4" style="font-family: cursive">All the best!!</h1>
-  <div class="name mat-body-2 my-3">
-    <!-- <mat-form-field appearance="fill">
-      <mat-label for="name">Enter your name:</mat-label>
-      <input matInput #name id="name" />
-    </mat-form-field> -->
-    <mat-form-field appearance="fill">
-      <mat-label for="name">Enter your name:</mat-label>
-      <input matInput [formControl]="text" id="name" required />
-      @if (text.invalid){
-        <mat-error>{{getErrorMessage()}}</mat-error>
-      }
-    </mat-form-field>
-    
-  </div>
-  <div>
-    <mat-form-field>
-      <mat-label>Choose Subject</mat-label>
-      <mat-select [formControl]="selected" [errorStateMatcher]="matcher">
-        <mat-option>Clear</mat-option>
-        <mat-option value="valid">Operating System</mat-option>
-        <!-- <mat-option value="invalid">Invalid option</mat-option> -->
-      </mat-select>
-      @if (selected.hasError('required')) {
+  <form>
+    <div class="name mat-body-2 my-3">
+      <mat-form-field appearance="fill">
+        <mat-label for="name">Enter your name:</mat-label>
+        <input matInput #name [formControl]="text" id="name" required />
+        @if (text.invalid){
+        <mat-error>{{ getErrorMessage() }}</mat-error>
+        }
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field>
+        <mat-label>Choose Subject</mat-label>
+        <mat-select [formControl]="selected" [errorStateMatcher]="matcher">
+          <mat-option>Clear</mat-option>
+          <mat-option value="valid">Operating System</mat-option>
+          <!-- <mat-option value="invalid">Invalid option</mat-option> -->
+        </mat-select>
+        @if (selected.hasError('required')) {
         <mat-error>You must choose a subject.</mat-error>
-      }
-    </mat-form-field>
-  </div>
-  <button
-    mat-raised-button
-    color="primary"
-    routerLink="/question-component"
-    routerLinkActive="active"
-    ariaCurrentWhenActive="page"
-    (click)="startQuiz()"
-  >
-    Start the Quiz!
-  </button>
+        }
+      </mat-form-field>
+    </div>
+    <button
+      mat-raised-button
+      color="primary"
+      routerLink="/question-component"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+      (click)="startQuiz()"
+      [disabled]="text.invalid || selected.hasError('required')">
+      Start the Quiz!
+    </button>
+  </form>
   <!-- <li><a routerLink="/question-component" routerLinkActive="active" ariaCurrentWhenActive="page">First Component</a></li> -->
   <!-- <button mat-stroked-button color="primary">Start the Quiz!</button> -->
   <!-- <button mat-button>Basic</button>

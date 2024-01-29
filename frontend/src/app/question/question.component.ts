@@ -46,6 +46,7 @@ export interface Ques {
 export class QuestionComponent {
   httpClient = inject(HttpClient);
   data: any[] = []
+  isQuizStarted: boolean = false
   ngOnInit(): void {
     this.fetchData()
     this.startCounter();
@@ -55,6 +56,7 @@ export class QuestionComponent {
     else{
       console.error('localStorage is not supported in this environment.');
     }
+    this.isQuizStarted = true
   }
 
   fetchData(){

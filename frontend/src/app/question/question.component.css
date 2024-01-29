@@ -104,3 +104,10 @@ li .mat-card:hover {
 ol {
     padding: 0;
 }
+
+.center-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 100vh;  */
+}
